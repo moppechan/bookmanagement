@@ -1,10 +1,11 @@
-{% extends "layout.html" %}
-
-{% block css %}
-<!-- なし -->
-{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
   <h3>ログイン画面</h3>
   {% if error != null %}
     <p style="color:red">{{error}}</p>
@@ -18,4 +19,5 @@
     <button type="submit">ログイン</button>
   </form>
   <a href="{{url_for('register_form')}}">アカウント新規登録</a>
-{% endblock %}
+</body>
+</html>
