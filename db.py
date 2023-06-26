@@ -45,7 +45,7 @@ def insert_user(user_name, password):
   return count
 
 def login(user_name, password):
-  sql = 'SELECT hashed_password, salt FROM user_sample WHERE name = %s'
+  sql = 'SELECT hashed_password, salt FROM book_user WHERE name = %s'
   flg = False
   try:
     connection=get_connection()
