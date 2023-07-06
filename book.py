@@ -1,13 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for
 import bookdb as db
 
-app = Flask(__name__)
+book_bp = Blueprint('book', __name__, url_prefix='/book')
 
-@app.route('/bookregi')
+# app = Flask(__name__)
+
+@book_bp.route('/bookregi')
 def bookregi():
     return render_template('bookregi.html')
 
-@app.route('/bookregi_exe', methods=["POST"])
+@book_bp.route('/bookregi_exe', methods=["POST"])
 def bookregi_exe():
     title = request.form.get('title')
     author = request.form.get('author')
@@ -20,14 +22,12 @@ def bookregi_exe():
     
     return render_template('list.html', books=book_list)
 
-@app.route('/search')
+@book_bp.route('/search')
 def search():
     return render_template('search.html')
 
-@app.route('/list')
+@book_bp.route('/list')
 def list():
     book_list = db.select_all_books()
     return render_template('list.html', books=book_list)
 
-if __name__ == "__main__":
-    app.run(debug=True)

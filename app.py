@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import db, string, random
+from book import book_bp
 
 app = Flask(__name__)
 app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
+
+# BluePrint登録
+app.register_blueprint(book_bp)
+
 
 @app.route('/', methods=['GET'])
 def index():

@@ -8,7 +8,7 @@ def get_connection():
 def select_all_books():
     connection = get_connection()
     cursor = connection.cursor()
-    sql = "SELECT title, author, publisher FROM book_manage"
+    sql = "SELECT * FROM book_manage"
     
     cursor.execute(sql)
     rows = cursor.fetchall()
@@ -20,10 +20,21 @@ def select_all_books():
 def insert_book(title, author, publisher, isbn):
     connection = get_connection()
     cursor = connection.cursor()
-    sql = 'INSERT INTO book_manage VALUES (default, %s, %s, %s, %s)'
+    sql = "INSERT INTO book_manage VALUES (default, %s, %s, %s, %s)"
     
     cursor.execute(sql, (title, author, publisher, isbn))
     
     connection.commit()
     cursor.close()
     connection.close()
+    
+def delete_book(id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "DELETE FROM book_manage WHERE id = %s"
+    
+    cursor.execute(sql, (id,))
+    
+    connection.commit()
+    cursor.close()
+    connection.close()    
