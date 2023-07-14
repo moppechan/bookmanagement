@@ -29,6 +29,11 @@ def login():
     if db.login(user_name, password):
         session['user'] = True
         return redirect(url_for('top'))
+    
+    if db.adminlogin(user_name, password):
+        session['user'] = True
+        return redirect(url_for('admintop'))
+    
     else:
         error = 'ユーザ名またはパスワードが違います。'
         
@@ -36,12 +41,34 @@ def login():
         input_data={'user_name':user_name, 'password':password}
         return render_template('index.html', error=error, data=input_data)
     
+@app.route('/', methods=['POST'])
+def adminlogin():  
+    user_name = request.form.get('username')
+    password = request.form.get('password') 
+     
+    if db.adminlogin(user_name, password):
+        session['user'] = True
+        return redirect(url_for('admintop'))
+    else:
+        error = 'ユーザ名またはパスワードが違います。'
+        
+        # dictで返すことでフォームの入力量が増えても可読性が下がらない。
+        input_data={'user_name':user_name, 'password':password}
+        return render_template('index.html', error=error, data=input_data)
+        
 @app.route('/top', methods=['GET'])
 def top():
     if 'user' in session:
         return render_template('top.html')   
     else :
         return redirect(url_for('index'))
+    
+@app.route('/admintop', methods=['GET'])
+def admintop():
+    if 'user' in session:
+        return render_template('admintop.html')   
+    else :
+        return redirect(url_for('index'))    
    
 @app.route('/logout')
 def logout():
@@ -65,8 +92,11 @@ def register_exe():
     if password == '':
         error = 'パスワードが未入力です'
         return render_template('register.html', error=error)
-
-    count = db.insert_user(user_name, password)
+    
+    if user_name == 'admin':
+        count = db.insert_admin(user_name, password)
+    else:    
+        count = db.insert_user(user_name, password)
 
     if count == 1:
         msg = '登録が完了しました。'

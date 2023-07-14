@@ -6,18 +6,18 @@
   {% block css %}
   <!-- CSS埋め込み -->
   {% endblock %}
-  <title>レイアウトサンプル</title>
+  <title>レイアウト</title>
 </head>
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{url_for('top')}}">図書管理システム</a>
+        <a class="navbar-brand" href="{{url_for('admintop')}}">図書管理システム</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="{{url_for('book.list')}}">一覧</a>
             <a class="nav-link" href="{{url_for('book.bookregi')}}">登録</a>
-            <a class="nav-link" href="{{url_for('book.search')}}">検索</a>
+            <a class="nav-link" href="{{url_for('book.delete')}}">削除</a>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
 
   <footer class="footer bg-light fixed-bottom">
     <div class="container">
-      <p class="text-muted text-center"> © 2023 My Flask App</p>
+      <p class="text-muted text-center"> © 2023 K0SUKE BOOK MANAGEMENT</p>
     </div>
   </footer>
 </body>
