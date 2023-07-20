@@ -35,11 +35,6 @@ def list():
     book_list = db.select_all_books()
     return render_template('list.html', books=book_list)
 
-@book_bp.route('/userlist')
-def userlist():
-    book_list = db.select_all_books()
-    return render_template('userlist.html', books=book_list)
-
 @book_bp.route('/search')
 def search():
     return render_template('search.html')
