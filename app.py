@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import db, string, random
+import db, string, random,bookdb
 from book import book_bp
 
 app = Flask(__name__)
@@ -59,7 +59,8 @@ def adminlogin():
 @app.route('/top', methods=['GET'])
 def top():
     if 'user' in session:
-        return render_template('top.html')   
+        book_list = bookdb.select_all_books()
+        return render_template('top.html', books=book_list)   
     else :
         return redirect(url_for('index'))
     

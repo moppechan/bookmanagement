@@ -39,3 +39,27 @@ def list():
 def userlist():
     book_list = db.select_all_books()
     return render_template('userlist.html', books=book_list)
+
+@book_bp.route('/search')
+def search():
+    return render_template('search.html')
+
+@book_bp.route('/search_exe', methods=['POST'])
+def search_exe():
+    print('*****test******')
+    keyword = request.form.get('title')
+    print(f'keyword:{keyword}')
+    search_list = db.search_book(keyword)
+    return render_template('searchresult.html' , books=search_list)
+
+@book_bp.route('/usersearch')
+def usersearch():
+    return render_template('usersearch.html')
+
+@book_bp.route('/usersearch_exe', methods=['POST'])
+def usersearch_exe():
+    print('*****test******')
+    keyword = request.form.get('title')
+    print(f'keyword:{keyword}')
+    search_list = db.search_book(keyword)
+    return render_template('usersearchresult.html' , books=search_list)

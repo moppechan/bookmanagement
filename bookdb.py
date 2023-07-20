@@ -1,4 +1,4 @@
-import os, psycopg2, hashlib, string, random
+import os, psycopg2
 
 def get_connection():
     url = os.environ['DATABASE_URL']
@@ -38,3 +38,19 @@ def delete_book(id):
     connection.commit()
     cursor.close()
     connection.close()    
+    
+def search_book(keyword):
+    connection = get_connection()
+    cursor = connection.cursor()
+    
+    
+    print('+++++ '+('%' + keyword + '%'))
+    key = ('%' + keyword + '%')
+    cursor.execute("SELECT * FROM book_manage WHERE name LIKE %s", (key,))
+    #cursor.execute("SELECT * FROM book_manage WHERE name LIKE '%test%'")
+    result = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+    return result
+ 

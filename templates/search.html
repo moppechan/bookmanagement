@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<h1>検索する図書のタイトルを入力してください</h1>
+<form action="{{url_for('book.search_exe')}}" method="post">
+    <input type="text" class="keyword" id="title" name="title">
+    <button type="submit">検索</button>
+</form>  
+{% endblock %}
