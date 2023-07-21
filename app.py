@@ -67,7 +67,8 @@ def top():
 @app.route('/admintop', methods=['GET'])
 def admintop():
     if 'user' in session:
-        return render_template('admintop.html')   
+        book_list = bookdb.select_all_books()
+        return render_template('admintop.html', books=book_list)   
     else :
         return redirect(url_for('index'))    
    
@@ -87,7 +88,7 @@ def register_exe():
 
     # バリデーションチェック
     if user_name == '':
-        error = 'ユーザ名が未入力です'
+        error = 'ユーザー名が未入力です'
         return render_template('register.html', error=error)
 
     if password == '':

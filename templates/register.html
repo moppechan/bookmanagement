@@ -4,18 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
   <title>Document</title>
 </head>
 <body>
-  <h3>ユーザ登録画面</h3>
+  <h2>ユーザー登録</h2>
   {% if error != null %}
-    <p style="color:red">{{error}}</p>
+    <h3 style="color:red">{{error}}</h3>
   {% endif %}
-  <form action="{{url_for('register_exe')}}" method="post">
-    ユーザー名<input type="text" name="username" required><br>
-    パスワード<input type="password" name="password" required><br>
-    <input type="submit" value="登録" class="button">
-  </form>
-
+  <div class="box_con">
+    <form action="{{url_for('register_exe')}}" method="post">
+      <table class="formTable">
+        <tr>
+          <th>ユーザー名<span>必須</span></th>
+          <td><input type="text" name="username" size="30"></td>
+        </tr>
+        <tr>
+          <th>パスワード<span>必須</span></th>
+          <td><input type="password" name="password" size="30"></td>
+        </tr>
+      </table>
+      <p class="btn">    
+        <span><input type="submit" value="登録" class="button"></span>
+      </p>  
+    </form>
+  </div>
 </body>
 </html>

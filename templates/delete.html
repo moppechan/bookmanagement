@@ -1,12 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
 {% endblock %}
 
 {% block content %}
-<h1>削除する図書のIDを入力してください</h1>
-<form action="{{url_for('book.delete_exe')}}" method="post">
-    ID:<input type="text" name="id"><br>
-    <input type="submit" value="削除" class="button">
-</form>
+<h2>削除する図書のIDを入力してください</h2>
+<div class="box_con">
+    <form action="{{url_for('book.delete_exe')}}" method="post">
+        <table class="formTable">
+            <tr> 
+                <th>ID</th>
+                    <td><input type="text" name="id" size="30"></td>
+            </tr>
+        </table>
+        <p class="btn">        
+            <span><input type="submit" value="削除" class="button"></span>
+        </p>    
+    </form>
+</div>    
 {% endblock %}

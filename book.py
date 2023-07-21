@@ -30,11 +30,6 @@ def delete_exe():
     db.delete_book(id)
     return render_template('delresult.html', id=id)
 
-@book_bp.route('/list')
-def list():
-    book_list = db.select_all_books()
-    return render_template('list.html', books=book_list)
-
 @book_bp.route('/search')
 def search():
     return render_template('search.html')

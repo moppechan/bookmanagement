@@ -5,12 +5,30 @@
 {% endblock %}
 
 {% block content %}
-  <h1>登録</h1>
+<h2>図書登録</h2>
+<div class="box_con">
   <form action="{{url_for('book.bookregi_exe')}}" method="post">
-    タイトル：<input type="text" name="title"><br>
-    著者：<input type="text" name="author"><br>
-    出版社：<input type="text" name="publisher"><br>
-    ISBN:<input type="number" name="isbn"><br>
-    <button type="submit">登録</button>
+    <table class="formTable">
+      <tr>
+        <th>タイトル<span>必須</span></th>
+        <td><input type="text" name="title" size="30"></td>
+      </tr>     
+      <tr>
+        <th>著者<span>必須</span></th> 
+        <td><input type="text" name="author" size="30"></td>
+      </tr>
+      <tr>
+        <th>出版社<span>必須</span></th>
+        <td><input type="text" name="publisher" size="30"></td> 
+      </tr>
+      <tr>
+        <th>ISBN<span>必須</span></th>
+        <td><input type="number" name="isbn" size="30"></td>
+      </tr>
+    </table>  
+    <p class="btn">
+      <span><input type="submit" value="登録"></span>
+    </p>
   </form>
+</div>
 {% endblock %}

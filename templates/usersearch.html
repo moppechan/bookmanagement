@@ -1,12 +1,22 @@
 {% extends 'userlayout.html' %}
 
 {% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/user.css')}}">
 {% endblock %}
 
 {% block content %}
-    <h1>検索する図書のタイトルを入力してください</h1>
-<form action="{{url_for('book.usersearch_exe')}}" method="post">
-    <input type="text" class="keyword" id="title" name="title"><br>
-    <button type="submit">検索</button>
-</form>  
+<h2>検索する図書のタイトルを入力してください</h2>
+<div class="box_con">
+  <form action="{{url_for('book.usersearch_exe')}}" method="post">
+    <table class="formTable">
+      <tr>
+        <th>タイトル</th>
+        <td><input type="text" class="keyword" id="title" name="title" size="30"></td>
+      </tr>
+    </table>
+    <p class="btn">  
+      <span><input type="submit" value="検索" class="button"></span>
+    </p>  
+  </form> 
+</div> 
 {% endblock %}

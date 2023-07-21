@@ -1,5 +1,27 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>管理者トップページです</h1>
+    <h1>管理者トップページ</h1>
+    <table class="table table-striped">
+        <thead>
+             <tr>
+                <th>ID</th>
+                <th>タイトル</th>
+                <th>著者</th>
+                <th>出版社</th>
+                <th>ISBN</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book[0] }}</td>
+                <td>{{ book[1] }}</td>
+                <td>{{ book[2] }}</td>
+                <td>{{ book[3] }}</td>
+                <td>{{ book[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
 {% endblock %}
