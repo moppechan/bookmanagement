@@ -7,7 +7,6 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>図書システム</h1>
   {% if error != null %}
   <p style="color:red">{{error}}</p>
   {% endif %}
@@ -15,12 +14,13 @@
   <p style="color:blue">{{msg}}</p>
   {% endif %}
   <div class="form-wrapper">
+  <h1>図書システム</h1>
   <form action="{{url_for('login')}}" method="post" class="form">
     <div class="form-item">
-      ユーザー名：<input type="text" name="username" value="{{data.user_name if data is defined else ''}}"><br>
+      <input type="text" name="username" value="{{data.user_name if data is defined else ''}}" placeholder="ユーザー名">
     </div>
     <div class="form-item">
-      パスワード：<input type="password" name="password" value="{{data.password if data is defined else ''}}"><br>
+      <input type="password" name="password" value="{{data.password if data is defined else ''}}" placeholder="パスワード">
     </div>
     <div class="button-panel">
       <input type="submit" value="ログイン" class="button">
