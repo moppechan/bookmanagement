@@ -30,10 +30,6 @@ def delete_exe():
     db.delete_book(id)
     return render_template('delresult.html', id=id)
 
-@book_bp.route('/search')
-def search():
-    return render_template('search.html')
-
 @book_bp.route('/search_exe', methods=['POST'])
 def search_exe():
     print('*****test******')
@@ -41,10 +37,6 @@ def search_exe():
     print(f'keyword:{keyword}')
     search_list = db.search_book(keyword)
     return render_template('searchresult.html' , books=search_list)
-
-@book_bp.route('/usersearch')
-def usersearch():
-    return render_template('usersearch.html')
 
 @book_bp.route('/usersearch_exe', methods=['POST'])
 def usersearch_exe():
