@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -10,12 +10,12 @@
     <form action="{{url_for('book.delete_exe')}}" method="post">
         <table class="formTable">
             <tr> 
-                <th>ID</th>
-                    <td><input type="text" name="id" size="30"></td>
+                <th>ID<span>必須</span></th>
+                <td><input type="text" name="id" size="30"></td>
             </tr>
         </table>
         <p class="btn">        
-            <span><input type="submit" value="削除" class="button"></span>
+            <span><input type="submit" value="削除"></span>
         </p>    
     </form>
 </div>    

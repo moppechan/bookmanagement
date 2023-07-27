@@ -22,9 +22,9 @@
             <input type="checkbox" id="pop-up">
             <div class="overlay">
               <div class="window">
-                <label class="close" for="pop-up">閉じる</label>
-                <h4 class="text">ログアウトしますか？</h4>
-                <a class="text" href="{{url_for('logout')}}">ログアウトします</a>
+                <label class="close" for="pop-up">✖</label>
+                <h2 class="text">ログアウトしますか？</h2>
+                <a class="text" href="{{url_for('logout')}}">ログアウトする</a>
               </div>
             </div>
             <form action="{{url_for('book.search_exe')}}" method="post" class="search-form-003">
